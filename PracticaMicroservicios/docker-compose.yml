@@ -1,0 +1,41 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  tareas-pendientes:
+    build: 
+      context: ./TareasPendient
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"
+    container_name: ms-tareas-pendientes
+    volumes:
+      - ./TareasPendient/tareas_pendientes.json:/app/tareas_pendientes.json
+    networks:
+      - tareas-network
+
+  tareas-completadas:
+    build:
+      context: ./TareasCompleta
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8081"
+    container_name: ms-tareas-completadas
+    volumes:
+      - ./TareasCompleta/tareas_completas.json:/app/tareas_completas.json
+    networks:
+      - tareas-network
+    
+# Servidor web para la interfaz
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    networks:
+      - tareas-network
+
+networks:
+  tareas-network:
+    driver: bridge
