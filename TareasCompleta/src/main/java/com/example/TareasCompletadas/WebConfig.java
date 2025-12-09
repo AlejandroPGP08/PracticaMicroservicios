@@ -19,7 +19,7 @@ public class WebConfig {
                 // Aplica a todas las rutas
                 registry.addMapping("/**")
                         // Permite requests desde localhost:8000
-                        .allowedOrigins("http://localhost")
+                        .allowedOrigins("http://localhost","http://44.211.33.236")
                         //.allowedOrigins("*")
                         // Métodos HTTP permitidos
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
@@ -32,3 +32,4 @@ public class WebConfig {
         };
     }
 }
+
