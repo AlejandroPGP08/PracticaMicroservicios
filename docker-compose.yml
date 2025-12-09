@@ -6,8 +6,6 @@ services:
     build: 
       context: ./TareasPendient
       dockerfile: Dockerfile
-    ports:
-      #- "8082:8080"
     container_name: ms-tareas-pendientes
     volumes:
       - ./TareasPendient/tareas_pendientes.json:/app/tareas_pendientes.json
@@ -18,8 +16,6 @@ services:
     build:
       context: ./TareasCompleta
       dockerfile: Dockerfile
-    ports:
-      #- "8083:8081"
     container_name: ms-tareas-completadas
     volumes:
       - ./TareasCompleta/tareas_completas.json:/app/tareas_completas.json
@@ -42,3 +38,4 @@ networks:
   tareas-network:
 
     driver: bridge
+
