@@ -10,7 +10,8 @@ COPY tareas_pendientes.json ./
 COPY target/TareasPendientes-1.0.0.jar app.jar
 
 # Exponer puerto
-EXPOSE 8080
+EXPOSE 8082
 
 # Comando para ejecutar la aplicación
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
