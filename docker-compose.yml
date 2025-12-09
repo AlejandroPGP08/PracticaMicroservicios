@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  tareas-pendientes:    # MICROSERVICIO 1
+    build: ./TareasPendientes
+    ports:
+      - "8082:8080"     # Host:8082 → Contenedor:8080
+    container_name: ms-tareas-pendientes
+    volumes:
+      - ./TareasPendientes/tareas_pendientes.json:/app/tareas_pendientes.json
+
+  tareas-completadas:   # MICROSERVICIO 2
+    build: ./TareasCompletadas
+    ports:
+      - "8083:8081"     # Host:8083 → Contenedor:8081
+    container_name: ms-tareas-completadas
+    volumes:
+      - ./TareasCompletadas/tareas_completas.json:/app/tareas_completas.json
+    
+  # Servidor web para la interfaz - AGREGAR ESTO
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html  
+    depends_on:
+      - tareas-pendientes
+      - tareas-completadas
