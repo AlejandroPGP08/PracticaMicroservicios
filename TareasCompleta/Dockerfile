@@ -10,7 +10,8 @@ COPY tareas_completas.json ./
 COPY target/TareasCompletadas-1.0.0.jar app.jar
 
 # Exponer puerto
-EXPOSE 8081
+EXPOSE 8083
 
 #Cinabdi oara ejecutar la aplicación
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
