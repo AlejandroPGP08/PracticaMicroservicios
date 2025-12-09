@@ -423,8 +423,8 @@
     <script>
         // URLs de los microservicios
         // Por esto:
-        const PENDING_API_BASE = window.env?.PENDING_API_URL || 'http://localhost:8082' || 'http://44.211.33.236:8082';
-        const COMPLETED_API_BASE = window.env?.COMPLETED_API_URL || 'http://localhost:8083' || 'http://44.211.33.236:8083';
+        const PENDING_API_BASE = window.env?.PENDING_API_URL || 'http://localhost:8082' || '/api/tareas-pendientes';
+        const COMPLETED_API_BASE = window.env?.COMPLETED_API_URL || 'http://localhost:8083' || '/api/tareas-completadas';
 
         // Elementos DOM
         const pendingTasksContainer = document.getElementById('pending-tasks');
@@ -704,3 +704,4 @@
 </body>
 
 </html>
+
