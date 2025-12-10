@@ -1,16 +1,14 @@
-# Dockerfile
-FROM eclipse-temurin:17-jdk-jammy
-
-# Crear directorio de trabajo
+# Esta versión COMPILA y CONSTRUYE en un solo paso
+FROM maven:3.8.4-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-
-# Copiar el archivo de tareas pendientes al directorio de trabajo
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+# Copia desde la etapa de compilación
+COPY --from=build /app/target/TareasPendientes-1.0.0.jar app.jar
 COPY tareas_pendientes.json ./
-COPY target/TareasPendientes-1.0.0.jar app.jar
-
-# Exponer puerto
 EXPOSE 8080
-
-# Comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
