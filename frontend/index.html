@@ -426,8 +426,8 @@
         const API_BASE = window.env?.API_URL || 'http://localhost:8080';
         
         // A ESTO (opción 2 - microservicios):
-        const PENDING_API_BASE = window.env?.PENDING_API_URL || 'http://localhost:8082';
-        const COMPLETED_API_BASE = window.env?.COMPLETED_API_URL || 'http://localhost:8083';
+        const PENDING_API_BASE = "https://tareas-pendientes-568002848716.us-central1.run.app";
+        const COMPLETED_API_BASE = "https://tareas-completadas-568002848716.us-central1.run.app";
         // ==================================
 
         // Elementos DOM (sin cambios)
@@ -731,4 +731,5 @@
         }, 30000);
     </script>
 </body>
+
 </html>
