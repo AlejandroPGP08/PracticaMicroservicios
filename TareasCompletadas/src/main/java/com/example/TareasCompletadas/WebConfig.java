@@ -19,7 +19,7 @@ public class WebConfig {
                 // Aplica a todas las rutas
                 registry.addMapping("/**")
                         // Permite requests desde localhost:8000
-                        .allowedOrigins("http://localhost","http://localhost:8000")
+                        .allowedOrigins("http://localhost","http://localhost:8000","https://frontend-tareas-568002848716.us-central1.run.app")
                         //.allowedOrigins("*")
                         // Métodos HTTP permitidos
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
@@ -32,3 +32,4 @@ public class WebConfig {
         };
     }
 }
+
