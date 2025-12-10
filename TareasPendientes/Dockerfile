@@ -8,7 +8,8 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 # Copia desde la etapa de compilación
-COPY --from=build /app/target/TareasPendientes-1.0.0.jar app.jar
+COPY *.jar app.jar
 COPY tareas_pendientes.json ./
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
