@@ -1,26 +1,12 @@
 steps:
-  # Paso 1: Verificar estructura
-  - name: 'ubuntu'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        echo "=== ESTRUCTURA ==="
-        ls -la
-        echo "=== TareasPendientes ==="
-        ls -la TareasPendientes/
-        echo "=== Dockerfile contenido ==="
-        cat TareasPendientes/Dockerfile
-  
-  # Paso 2: Construir Tareas Pendientes
+  # Paso 1: Construir Tareas Pendientes
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/tareas-pendientes:$COMMIT_SHA', 'TareasPendientes']
   
-  # Paso 3: Construir Tareas Completadas
+  # Paso 2: Construir Tareas Completadas
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/tareas-completadas:$COMMIT_SHA', 'TareasCompletadas']
 
 images:
   - 'gcr.io/$PROJECT_ID/tareas-pendientes:$COMMIT_SHA'
   - 'gcr.io/$PROJECT_ID/tareas-completadas:$COMMIT_SHA'
-
